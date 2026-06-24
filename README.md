@@ -1,4 +1,4 @@
-# KOP-TANGGUH
+# JALA-TANGGUH
 
 ## Platform Agregasi Rantai Pasok Dingin dan Mitigasi Krisis Pangan Berbasis Koperasi
 
@@ -10,7 +10,7 @@
 
 ## 1. Ringkasan Eksekutif
 
-KOP-TANGGUH adalah sistem informasi manajemen rantai pasok yang dirancang untuk mengoptimalkan distribusi komoditas pangan mudah rusak (*perishable*) di tingkat koperasi. Sistem ini memfasilitasi mekanisme berbagi aset logistik rantai dingin (*cold-chain sharing economy*) antar-koperasi untuk mencegah kehilangan hasil panen (*food loss*) dan menstabilkan harga pangan selama krisis iklim.
+JALA-TANGGUH adalah sistem informasi manajemen rantai pasok yang dirancang untuk mengoptimalkan distribusi komoditas pangan mudah rusak (*perishable*) di tingkat koperasi. Sistem ini memfasilitasi mekanisme berbagi aset logistik rantai dingin (*cold-chain sharing economy*) antar-koperasi untuk mencegah kehilangan hasil panen (*food loss*) dan menstabilkan harga pangan selama krisis iklim.
 
 ---
 
@@ -26,7 +26,7 @@ Krisis iklim El Nino menyebabkan penurunan signifikan pada hasil tangkapan laut 
 
 ## 3. Solusi yang Ditawarkan
 
-KOP-TANGGUH menyediakan antarmuka manajemen B2B antar-koperasi dengan tiga fungsi utama:
+JALA-TANGGUH menyediakan antarmuka manajemen B2B antar-koperasi dengan tiga fungsi utama:
 
 1. **Dashboard Ketahanan Pangan:** Visualisasi data waktu nyata mengenai surplus dan defisit komoditas pemicu inflasi.
 2. **Berbagi Aset Rantai Dingin:** Sistem pencocokan (*matching*) yang menghubungkan koperasi dengan surplus komoditas dan koperasi yang memiliki aset logistik dingin menganggur atau melakukan perjalanan kosong (*empty backhaul*).
@@ -93,7 +93,7 @@ Inventarisasi aset logistik rantai dingin.
 | Link_Pemilik_Aset | Link | Relasi ke Data_Koperasi |
 | Jenis_Aset | Single Select | Truk Pendingin, Cold Storage Statis, Kapal Ber-AC |
 | Kapasitas_Ton | Number | Kapasitas angkut atau penyimpanan |
-| Status_Aset | Single Select | Aktif, Tidak Aktif, Dalam Perbaikan, Menganggur |
+| Status_Aset | Single Select | Aktif, Tidak Aktif, Dalam Perbaikan, Menganggur, Dalam Perjalanan Kosong |
 | Rute_Tersedia | Text | Rute operasional |
 | Tanggal_Tersedia | Date | Ketersediaan aset |
 | Catatan_Perawatan | Long Text | Riwayat pemeliharaan |
@@ -107,10 +107,10 @@ Riwayat transaksi distribusi dan penyelamatan komoditas.
 | Koperasi_Pengirim | Link | Relasi ke Data_Koperasi |
 | Koperasi_Penerima | Link | Relasi ke Data_Koperasi |
 | Aset_Logistik_Dipakai | Link | Relasi ke Aset_Logistik_Dingin |
-| Status_Kiriman | Single Select | Menunggu Jemput, Dalam Perjalanan, Berhasil Diselamatkan |
+| Status_Kiriman | Single Select | Menunggu Jemput, Dalam Perjalanan, Berhasil Diselamatkan, Gagal |
 | Tanggal_Transaksi | Date | Tanggal transaksi |
 | Estimasi_Waktu_Tiba | Date | Estimasi kedatangan |
-| AI_Transaction_Risk | Single Select | Rendah, Sedang, Tinggi |
+| AI_Transaction_Risk | Single Select | Rendah, Sedang, Tinggi, Kritis |
 
 ---
 
@@ -137,8 +137,9 @@ Untuk mereplikasi sistem ini secara lokal, ikuti langkah-langkah berikut:
 Basis data ini telah diisi dengan data dummy yang mensimulasikan kondisi nyata di lapangan untuk keperluan demonstrasi:
 
 * **Skenario Sukses:** Transaksi berhasil diselamatkan, penggunaan aset logistik optimal.
-* **Skenario Krisis (El Nino):** Gagal panen total, gudang pendingin penuh, truk rusak, dan keterlambatan distribusi.
-* **Skenario Risiko:** Stok menipis, ketersediaan truk kosong (*backhaul*) yang membutuhkan pencocokan.
+* **Skenario Krisis (El Nino):** Gagal panen total, hasil tangkap turun drastis, dan gudang pendingin rusak.
+* **Skenario Kegagalan Logistik:** Transaksi gagal akibat cold storage penuh, truk rusak, atau keterlambatan distribusi.
+* **Skenario Optimasi Aset:** Pemanfaatan truk dalam perjalanan kosong (*empty backhaul*) untuk efisiensi logistik.
 
 ---
 
